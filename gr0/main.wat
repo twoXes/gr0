@@ -117,9 +117,11 @@
 ;; smiley
 (data (i32.const 0x19a0) "\c3\81\24\24\00\24\99\c3")
 
-(data (i32.const 0x19a8) "Hello from Wat!\00")
+(data (i32.const 0x19a8) "\c3\81\24\24\00\24\99\c3")
 
-(data (i32.const 0x19b8) "Press Y to blink\00")
+;;(data (i32.const 0x19a8) "Hello from Wat!\00")
+
+;;(data (i32.const 0x19b8) "Press Y to blink\00")
 
 (func (export "start")
 )
@@ -131,7 +133,7 @@
   (i32.store16 (global.get $DRAW_COLORS) (i32.const 2))
 
   ;; text("Hello from Wat!", 10, 10);
-  (call $text (i32.const 0x19a8) (i32.const 10) (i32.const 10))
+;;  (call $text (i32.const 0x19a8) (i32.const 10) (i32.const 10))
 
   ;; uint8_t gamepad = *GAMEPAD1;
   (local.set $gamepad (i32.load8_u (global.get $GAMEPAD1)))
@@ -147,6 +149,8 @@
   ;; blit(smiley, 76, 76, 8, 8, BLIT_1BPP);
   (call $blit (i32.const 0x19a0) (i32.const 76) (i32.const 76) (i32.const 8) (i32.const 8) (global.get $BLIT_1BPP))
 
+  (call $blit (i32.const 0x19a0) (i32.const 76) (i32.const 46) (i32.const 8) (i32.const 8) (global.get $BLIT_1BPP))
+
   ;; text("Press X to blink", 16, 90);
-  (call $text (i32.const 0x19b8) (i32.const 16) (i32.const 90))
+ ;; (call $text (i32.const 0x19b8) (i32.const 16) (i32.const 90))
 )
