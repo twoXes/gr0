@@ -115,14 +115,21 @@
 
 
 ;; smiley
-(data (i32.const 0x19a0) "\c3\81\24\24\00\24\99\c3")
-
-(data (i32.const 0x19a8) "\c3\81\24\24\00\24\99\c3")
-
-;;(data (i32.const 0x19a8) "Hello from Wat!\00")
-
-;;(data (i32.const 0x19b8) "Press Y to blink\00")
-
+(data (i32.const 0x19a0) "\11\11\11\11\11\11\11\11")
+(data (i32.const 0x19a8) "\ab\ba\12\21\43\34\ba\ab")
+(data (i32.const 0x19b0) "\ab\cd\ef\ff\fe\dc\ba\ab")
+(data (i32.const 0x19b8) "\01\23\45\67\84\ab\cd\ef")
+(data (i32.const 0x19c0) "\98\76\54\32\1f\ed\cb\af")
+(data (i32.const 0x19c8) "\66\66\66\66\66\66\66\66")
+(data (i32.const 0x19d0) "\77\77\77\77\77\77\77\77")
+(data (i32.const 0x19d8) "\88\88\88\88\88\88\88\88")
+(data (i32.const 0x19e0) "\99\99\99\99\99\99\99\99")
+(data (i32.const 0x19e8) "\aa\aa\aa\aa\aa\aa\aa\aa")
+(data (i32.const 0x19f0) "\bb\bb\bb\bb\bb\bb\bb\bb")
+(data (i32.const 0x19f8) "\cc\cc\cc\cc\cc\cc\cc\cc")
+(data (i32.const 0x20a0) "\dd\dd\dd\dd\dd\dd\dd\dd")
+(data (i32.const 0x20a8) "\ee\ee\ee\ee\ee\ee\ee\ee")
+(data (i32.const 0x20b0) "\ff\ff\ff\ff\ff\ff\ff\ff")
 (func (export "start")
 )
 
@@ -147,10 +154,21 @@
     ))
 
   ;; blit(smiley, 76, 76, 8, 8, BLIT_1BPP);
-  (call $blit (i32.const 0x19a0) (i32.const 76) (i32.const 76) (i32.const 8) (i32.const 8) (global.get $BLIT_1BPP))
-
-  (call $blit (i32.const 0x19a0) (i32.const 76) (i32.const 46) (i32.const 8) (i32.const 8) (global.get $BLIT_1BPP))
-
+  (call $blit (i32.const 0x19a0) (i32.const 10) (i32.const 96) (i32.const 8) (i32.const 8) (global.get $BLIT_1BPP))
+  (call $blit (i32.const 0x19a8) (i32.const 20) (i32.const 96) (i32.const 8) (i32.const 8) (global.get $BLIT_1BPP))
+  (call $blit (i32.const 0x19b0) (i32.const 30) (i32.const 96) (i32.const 8) (i32.const 8) (global.get $BLIT_1BPP))
+  (call $blit (i32.const 0x19b8) (i32.const 40) (i32.const 96) (i32.const 8) (i32.const 8) (global.get $BLIT_1BPP))
+  (call $blit (i32.const 0x19c0) (i32.const 50) (i32.const 96) (i32.const 8) (i32.const 8) (global.get $BLIT_1BPP))
+  (call $blit (i32.const 0x19c8) (i32.const 60) (i32.const 96) (i32.const 8) (i32.const 8) (global.get $BLIT_1BPP))
+  (call $blit (i32.const 0x19d0) (i32.const 70) (i32.const 96) (i32.const 8) (i32.const 8) (global.get $BLIT_1BPP))
+  (call $blit (i32.const 0x19d8) (i32.const 80) (i32.const 96) (i32.const 8) (i32.const 8) (global.get $BLIT_1BPP))
+  (call $blit (i32.const 0x19e0) (i32.const 90) (i32.const 96) (i32.const 8) (i32.const 8) (global.get $BLIT_1BPP))
+  (call $blit (i32.const 0x19e8) (i32.const 100) (i32.const 96) (i32.const 8) (i32.const 8) (global.get $BLIT_1BPP))
+  (call $blit (i32.const 0x19f0) (i32.const 110) (i32.const 96) (i32.const 8) (i32.const 8) (global.get $BLIT_1BPP))
+  (call $blit (i32.const 0x19f8) (i32.const 120) (i32.const 96) (i32.const 8) (i32.const 8) (global.get $BLIT_1BPP))
+  (call $blit (i32.const 0x20a0) (i32.const 130) (i32.const 96) (i32.const 8) (i32.const 8) (global.get $BLIT_1BPP))
+ ;; (call $blit (i32.const 0x20a8) (i32.const 140) (i32.const 96) (i32.const 8) (i32.const 8) (global.get $BLIT_1BPP))
+;;  (call $blit (i32.const 0x20b0) (i32.const 150) (i32.const 96) (i32.const 8) (i32.const 8) (global.get $BLIT_1BPP))
   ;; text("Press X to blink", 16, 90);
  ;; (call $text (i32.const 0x19b8) (i32.const 16) (i32.const 90))
 )
