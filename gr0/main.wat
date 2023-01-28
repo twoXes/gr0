@@ -126,19 +126,19 @@
 (data (i32.const 0x19e8) "\c3\bb\bb\bb\bb\bb\bb\c3") ;; todo
 (data (i32.const 0x19f0) "\c3\cc\cc\cc\cc\cc\cc\c3") ;; thickD
 (data (i32.const 0x19f8) "\c3\ff\ff\ff\ff\ff\ff\c3") ;; linesacross1
-(data (i32.const 0x20a0) "\dd\dd\dd\dd\dd\dd\dd\dd") ;; uplines
-(data (i32.const 0x20a8) "\81\ee\ee\ee\ee\ee\ee\81") ;; thinD
-(data (i32.const 0x20b0) "\81\ff\ff\ff\ff\ff\ff\81") ;; linesacross2
-(data (i32.const 0x20b8) "\69\96\69\96\69\96\69\96") ;; floor
-(data (i32.const 0x20c0) "\09\69\69\69\69\69\69\09") ;; oi
-(data (i32.const 0x20c8) "\13\07\39\39\39\39\07\13") ;; mol1-rotate
-(data (i32.const 0x20d0) "\13\35\39\39\39\39\35\13") ;; cCar-rotate
-(data (i32.const 0x20d8) "\13\07\52\52\52\52\07\13") ;; mol2-rotate
-(data (i32.const 0x20e0) "\13\07\65\65\65\65\07\13") ;; mol3-rotate
-(data (i32.const 0x20e8) "\13\07\11\11\11\11\07\13") ;; mol4-rotate
-(data (i32.const 0x20f0) "\13\07\55\55\55\55\07\13") ;; mol5-rotate
-(data (i32.const 0x20f8) "\13\07\88\88\88\88\07\13") ;; molcar-rotate
-(data (i32.const 0x21a0) "\07\11\18\18\18\18\11\07") ;; shape01
+(data (i32.const 0x2000) "\dd\dd\dd\dd\dd\dd\dd\dd") ;; uplines
+(data (i32.const 0x2008) "\81\ee\ee\ee\ee\ee\ee\81") ;; thinD
+(data (i32.const 0x2010) "\81\ff\ff\ff\ff\ff\ff\81") ;; linesacross2
+(data (i32.const 0x2018) "\69\96\69\96\69\96\69\96") ;; floor
+(data (i32.const 0x2020) "\09\69\69\69\69\69\69\09") ;; oi
+(data (i32.const 0x2028) "\13\07\39\39\39\39\07\13") ;; mol1-rotate
+(data (i32.const 0x2030) "\13\35\39\39\39\39\35\13") ;; cCar-rotate
+(data (i32.const 0x2038) "\13\07\52\52\52\52\07\13") ;; mol2-rotate
+(data (i32.const 0x2040) "\13\07\65\65\65\65\07\13") ;; mol3-rotate
+(data (i32.const 0x2048) "\13\07\11\11\11\11\07\13") ;; mol4-rotate
+(data (i32.const 0x2050) "\13\07\55\55\55\55\07\13") ;; mol5-rotate
+(data (i32.const 0x2058) "\13\07\88\88\88\88\07\13") ;; molcar-rotate
+(data (i32.const 0x2160) "\07\11\18\18\18\18\11\07") ;; shape01
 
 
 (func (export "start")
@@ -168,8 +168,8 @@
   (call $blit (i32.const 0x19d8) (i32.const 82) (i32.const 36) (i32.const 8) (i32.const 8) (global.get $BLIT_1BPP))
   (call $blit (i32.const 0x19f0) (i32.const 88) (i32.const 36) (i32.const 8) (i32.const 8) (global.get $BLIT_1BPP))
   (call $blit (i32.const 0x19a0) (i32.const 83) (i32.const 46) (i32.const 8) (i32.const 8) (global.get $BLIT_1BPP))
-  (call $blit (i32.const 0x20c8) (i32.const 83) (i32.const 76) (i32.const 8) (i32.const 8) (i32.or(global.get $BLIT_1BPP )(global.get $BLIT_ROTATE)))
-  (call $blit (i32.const 0x21a0) (i32.const 83) (i32.const 96) (i32.const 8) (i32.const 8) (global.get $BLIT_1BPP))
+  (call $blit (i32.const 0x2028) (i32.const 83) (i32.const 76) (i32.const 8) (i32.const 8) (i32.or(global.get $BLIT_1BPP )(global.get $BLIT_ROTATE)))
+  (call $blit (i32.const 0x2160) (i32.const 83) (i32.const 96) (i32.const 8) (i32.const 8) (global.get $BLIT_1BPP))
   ;; text("Press X to blink", 16, 90);
  ;; (call $text (i32.const 0x19b8) (i32.const 16) (i32.const 90))
 )
