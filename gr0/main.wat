@@ -138,7 +138,17 @@
 (data (i32.const 0x2048) "\13\07\11\11\11\11\07\13") ;; mol4-rotate
 (data (i32.const 0x2050) "\13\07\55\55\55\55\07\13") ;; mol5-rotate
 (data (i32.const 0x2058) "\13\07\88\88\88\88\07\13") ;; molcar-rotate
-(data (i32.const 0x2160) "\07\11\18\18\18\18\11\07") ;; shape01
+(data (i32.const 0x2060) "\07\11\18\18\18\18\11\07") ;; shape01
+(data (i32.const 0x2068) "\81\08\24\08\24\08\24\81") ;; razor
+(data (i32.const 0x2070) "\81\08\24\24\24\24\08\81") ;; 0-razor-rotate
+(data (i32.const 0x2078) "\24\81\08\08\08\08\81\24") ;; spider
+(data (i32.const 0x2080) "\24\08\81\81\81\81\08\ff") ;; castle
+(data (i32.const 0x2088) "\23\23\06\06\06\06\23\23") ;; yman-rotate
+(data (i32.const 0x2090) "\06\06\23\23\23\23\06\06") ;; faceman-rotate
+(data (i32.const 0x2098) "\23\06\23\06\23\06\23\06") ;;building-rotate
+(data (i32.const 0x20a0) "\a1\a1\10\10\10\10\a1\a1") ;;hatman-rotate
+(data (i32.const 0x20a8) "Press X to start") ;; text
+
 
 
 (func (export "start")
@@ -169,7 +179,5 @@
   (call $blit (i32.const 0x19f0) (i32.const 88) (i32.const 36) (i32.const 8) (i32.const 8) (global.get $BLIT_1BPP))
   (call $blit (i32.const 0x19a0) (i32.const 83) (i32.const 46) (i32.const 8) (i32.const 8) (global.get $BLIT_1BPP))
   (call $blit (i32.const 0x2028) (i32.const 83) (i32.const 76) (i32.const 8) (i32.const 8) (i32.or(global.get $BLIT_1BPP )(global.get $BLIT_ROTATE)))
-  (call $blit (i32.const 0x2160) (i32.const 83) (i32.const 96) (i32.const 8) (i32.const 8) (global.get $BLIT_1BPP))
-  ;; text("Press X to blink", 16, 90);
- ;; (call $text (i32.const 0x19b8) (i32.const 16) (i32.const 90))
+   (call $text(i32.const 0x20a8) (i32.const 21) (i32.const 106))
 )
