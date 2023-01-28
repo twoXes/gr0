@@ -131,7 +131,15 @@
 (data (i32.const 0x20b0) "\81\ff\ff\ff\ff\ff\ff\81") ;; linesacross2
 (data (i32.const 0x20b8) "\69\96\69\96\69\96\69\96") ;; floor
 (data (i32.const 0x20c0) "\09\69\69\69\69\69\69\09") ;; oi
-(data (i32.const 0x20c8) "\13\07\39\39\39\39\07\13") ;; moloch-rotate
+(data (i32.const 0x20c8) "\13\07\39\39\39\39\07\13") ;; mol1-rotate
+(data (i32.const 0x20d0) "\13\35\39\39\39\39\35\13") ;; cCar-rotate
+(data (i32.const 0x20d8) "\13\07\52\52\52\52\07\13") ;; mol2-rotate
+(data (i32.const 0x20e0) "\13\07\65\65\65\65\07\13") ;; mol3-rotate
+(data (i32.const 0x20e8) "\13\07\11\11\11\11\07\13") ;; mol4-rotate
+(data (i32.const 0x20f0) "\13\07\55\55\55\55\07\13") ;; mol5-rotate
+(data (i32.const 0x20f8) "\13\07\88\88\88\88\07\13") ;; molcar-rotate
+(data (i32.const 0x21a0) "\07\11\18\18\18\18\11\07") ;; shape01
+
 
 (func (export "start")
 )
@@ -161,6 +169,7 @@
   (call $blit (i32.const 0x19f0) (i32.const 88) (i32.const 36) (i32.const 8) (i32.const 8) (global.get $BLIT_1BPP))
   (call $blit (i32.const 0x19a0) (i32.const 83) (i32.const 46) (i32.const 8) (i32.const 8) (global.get $BLIT_1BPP))
   (call $blit (i32.const 0x20c8) (i32.const 83) (i32.const 76) (i32.const 8) (i32.const 8) (i32.or(global.get $BLIT_1BPP )(global.get $BLIT_ROTATE)))
+  (call $blit (i32.const 0x21a0) (i32.const 83) (i32.const 96) (i32.const 8) (i32.const 8) (global.get $BLIT_1BPP))
   ;; text("Press X to blink", 16, 90);
  ;; (call $text (i32.const 0x19b8) (i32.const 16) (i32.const 90))
 )
