@@ -114,13 +114,12 @@
 (global $TONE_PAN_RIGHT i32 (i32.const 32))
 
 
-
 (data (i32.const 0x19a0) "\11\11\11\11\11\11\11\11") ;; II
 (data (i32.const 0x19a8) "\c3\81\24\81\24\81\24\c3") ;;house1
 (data (i32.const 0x19b0) "\c3\24\81\24\81\24\81\c3") ;;house2
 (data (i32.const 0x19b8) "\00\58\13\58\13\58\13\00") ;;house3
 (data (i32.const 0x19c0) "\c3\34\55\89\00\89\34\c3") ;;cat
-(data (i32.const 0x19c8) "\c3\66\66\66\66\66\66\c3") ;; I
+(data (i32.const 0x19c8) "\c3\66\66\66\66\66\66\c3") ;; I - you
 (data (i32.const 0x19d0) "\c3\88\88\88\88\88\88\c3") ;; ironO
 (data (i32.const 0x19d8) "\c3\99\99\99\99\99\99\c3") ;; O
 (data (i32.const 0x19e0) "\c3\99\99\99\99\99\99\99") ;; N(unchuk)
@@ -130,6 +129,10 @@
 (data (i32.const 0x20a0) "\dd\dd\dd\dd\dd\dd\dd\dd") ;; uplines
 (data (i32.const 0x20a8) "\81\ee\ee\ee\ee\ee\ee\81") ;; thinD
 (data (i32.const 0x20b0) "\81\ff\ff\ff\ff\ff\ff\81") ;; linesacross2
+(data (i32.const 0x20b8) "\69\96\69\96\69\96\69\96") ;; floor
+(data (i32.const 0x20c0) "\09\69\69\69\69\69\69\09") ;; oi
+(data (i32.const 0x20c8) "\13\07\39\39\39\39\07\13") ;; moloch-rotate
+
 (func (export "start")
 )
 
@@ -153,11 +156,11 @@
       (i32.store16 (global.get $DRAW_COLORS) (i32.const 4))
     ))
 
-  ;; blit(smiley, 76, 76, 8, 8, BLIT_1BPP);
   (call $blit (i32.const 0x19e0) (i32.const 75) (i32.const 36) (i32.const 8) (i32.const 8) (global.get $BLIT_1BPP))
   (call $blit (i32.const 0x19d8) (i32.const 82) (i32.const 36) (i32.const 8) (i32.const 8) (global.get $BLIT_1BPP))
   (call $blit (i32.const 0x19f0) (i32.const 88) (i32.const 36) (i32.const 8) (i32.const 8) (global.get $BLIT_1BPP))
-  (call $blit (i32.const 0x19a0) (i32.const 82) (i32.const 46) (i32.const 8) (i32.const 8) (global.get $BLIT_1BPP))
+  (call $blit (i32.const 0x19a0) (i32.const 83) (i32.const 46) (i32.const 8) (i32.const 8) (global.get $BLIT_1BPP))
+  (call $blit (i32.const 0x20c8) (i32.const 83) (i32.const 76) (i32.const 8) (i32.const 8) (i32.or(global.get $BLIT_1BPP )(global.get $BLIT_ROTATE)))
   ;; text("Press X to blink", 16, 90);
  ;; (call $text (i32.const 0x19b8) (i32.const 16) (i32.const 90))
 )
