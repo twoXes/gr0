@@ -113,41 +113,39 @@
 (global $TONE_PAN_LEFT i32 (i32.const 16))
 (global $TONE_PAN_RIGHT i32 (i32.const 32))
 
-
-(data (i32.const 0x19a0) "\11\11\11\11\11\11\11\11") ;; II
-(data (i32.const 0x19a8) "\c3\81\24\81\24\81\24\c3") ;;house1
-(data (i32.const 0x19b0) "\c3\24\81\24\81\24\81\c3") ;;house2
-(data (i32.const 0x19b8) "\00\58\13\58\13\58\13\00") ;;house3
-(data (i32.const 0x19c0) "\c3\34\55\89\00\89\34\c3") ;;cat
-(data (i32.const 0x19c8) "\c3\66\66\66\66\66\66\c3") ;; I - you
-(data (i32.const 0x19d0) "\c3\88\88\88\88\88\88\c3") ;; ironO
-(data (i32.const 0x19d8) "\c3\99\99\99\99\99\99\c3") ;; O
-(data (i32.const 0x19e0) "\c3\99\99\99\99\99\99\99") ;; N(unchuk)
-(data (i32.const 0x19e8) "\c3\bb\bb\bb\bb\bb\bb\c3") ;; todo
-(data (i32.const 0x19f0) "\c3\cc\cc\cc\cc\cc\cc\c3") ;; thickD
-(data (i32.const 0x19f8) "\c3\ff\ff\ff\ff\ff\ff\c3") ;; linesacross1
-(data (i32.const 0x2000) "\dd\dd\dd\dd\dd\dd\dd\dd") ;; uplines
-(data (i32.const 0x2008) "\81\ee\ee\ee\ee\ee\ee\81") ;; thinD
-(data (i32.const 0x2010) "\81\ff\ff\ff\ff\ff\ff\81") ;; linesacross2
-(data (i32.const 0x2018) "\69\96\69\96\69\96\69\96") ;; floor
-(data (i32.const 0x2020) "\09\69\69\69\69\69\69\09") ;; oi
-(data (i32.const 0x2028) "\13\07\39\39\39\39\07\13") ;; mol1-rotate
-(data (i32.const 0x2030) "\13\35\39\39\39\39\35\13") ;; cCar-rotate
-(data (i32.const 0x2038) "\13\07\52\52\52\52\07\13") ;; mol2-rotate
-(data (i32.const 0x2040) "\13\07\65\65\65\65\07\13") ;; mol3-rotate
-(data (i32.const 0x2048) "\13\07\11\11\11\11\07\13") ;; mol4-rotate
-(data (i32.const 0x2050) "\13\07\55\55\55\55\07\13") ;; mol5-rotate
-(data (i32.const 0x2058) "\13\07\88\88\88\88\07\13") ;; molcar-rotate
-(data (i32.const 0x2060) "\07\11\18\18\18\18\11\07") ;; shape01
-(data (i32.const 0x2068) "\81\08\24\08\24\08\24\81") ;; razor
-(data (i32.const 0x2070) "\81\08\24\24\24\24\08\81") ;; 0-razor-rotate
-(data (i32.const 0x2078) "\24\81\08\08\08\08\81\24") ;; spider
-(data (i32.const 0x2080) "\24\08\81\81\81\81\08\ff") ;; castle
-(data (i32.const 0x2088) "\23\23\06\06\06\06\23\23") ;; yman-rotate
-(data (i32.const 0x2090) "\06\06\23\23\23\23\06\06") ;; faceman-rotate
-(data (i32.const 0x2098) "\23\06\23\06\23\06\23\06") ;;building-rotate
-(data (i32.const 0x20a0) "\a1\a1\10\10\10\10\a1\a1") ;;hatman-rotate
-(data (i32.const 0x20a8) "Press X to start") ;; text
+(data (i32.const 0x19a0) "\c3\99\99\99\99\99\99\99") ;; N(unchuk)
+(data (i32.const 0x19a8) "\c3\99\99\99\99\99\99\c3") ;; O
+(data (i32.const 0x19b0) "\c3\cc\cc\cc\cc\cc\cc\c3") ;; thickD
+(data (i32.const 0x19b8) "\11\11\11\11\11\11\11\11") ;; II
+(data (i32.const 0x19c0) "\c3\66\66\66\66\66\66\c3") ;; I - you
+(data (i32.const 0x19c8) "\c3\88\88\88\88\88\88\c3") ;; ironO
+(data (i32.const 0x19d0) "\c3\ff\ff\ff\ff\ff\ff\c3") ;; linesacross1
+(data (i32.const 0x19d8) "\dd\dd\dd\dd\dd\dd\dd\dd") ;; uplines
+(data (i32.const 0x19e0) "\81\ee\ee\ee\ee\ee\ee\81") ;; thinD
+(data (i32.const 0x19e8) "\81\ff\ff\ff\ff\ff\ff\81") ;; linesacross2
+(data (i32.const 0x19f0) "\69\96\69\96\69\96\69\96") ;; floor
+(data (i32.const 0x19f8) "\09\69\69\69\69\69\69\09") ;; oi
+(data (i32.const 0x2000) "\13\07\39\39\39\39\07\13") ;; mol1-rotate
+(data (i32.const 0x2008) "\13\35\39\39\39\39\35\13") ;; cCar-rotate
+(data (i32.const 0x2010) "\13\07\52\52\52\52\07\13") ;; mol2-rotate
+(data (i32.const 0x2018) "\13\07\65\65\65\65\07\13") ;; mol3-rotate
+(data (i32.const 0x2020) "\13\07\11\11\11\11\07\13") ;; mol4-rotate
+(data (i32.const 0x2028) "\13\07\55\55\55\55\07\13") ;; mol5-rotate
+(data (i32.const 0x2030) "\13\07\88\88\88\88\07\13") ;; molcar-rotate
+(data (i32.const 0x2038) "\07\11\18\18\18\18\11\07") ;; shape01
+(data (i32.const 0x2040) "\81\08\24\08\24\08\24\81") ;; razor
+(data (i32.const 0x2048) "\81\08\24\24\24\24\08\81") ;; 0-razor-rotate
+(data (i32.const 0x2050) "\24\81\08\08\08\08\81\24") ;; spider
+(data (i32.const 0x2058) "\24\08\81\81\81\81\08\ff") ;; castle
+(data (i32.const 0x2060) "\23\23\06\06\06\06\23\23") ;; yman-rotate
+(data (i32.const 0x2068) "\06\06\23\23\23\23\06\06") ;; faceman-rotate
+(data (i32.const 0x2070) "\23\06\23\06\23\06\23\06") ;;building-rotate
+(data (i32.const 0x2078) "\a1\a1\10\10\10\10\a1\a1") ;;hatman-rotate
+(data (i32.const 0x2080) "\c3\81\24\81\24\81\24\c3") ;;house1
+(data (i32.const 0x2088) "\c3\24\81\24\81\24\81\c3") ;;house2
+(data (i32.const 0x2090) "\00\58\13\58\13\58\13\00") ;;house3
+(data (i32.const 0x2098) "\c3\34\55\89\00\89\34\c3") ;;cat
+(data (i32.const 0x20a0) "Press X to start") ;; text
 
 
 
@@ -174,10 +172,10 @@
       (i32.store16 (global.get $DRAW_COLORS) (i32.const 4))
     ))
 
-  (call $blit (i32.const 0x19e0) (i32.const 75) (i32.const 36) (i32.const 8) (i32.const 8) (global.get $BLIT_1BPP))
-  (call $blit (i32.const 0x19d8) (i32.const 82) (i32.const 36) (i32.const 8) (i32.const 8) (global.get $BLIT_1BPP))
-  (call $blit (i32.const 0x19f0) (i32.const 88) (i32.const 36) (i32.const 8) (i32.const 8) (global.get $BLIT_1BPP))
-  (call $blit (i32.const 0x19a0) (i32.const 83) (i32.const 46) (i32.const 8) (i32.const 8) (global.get $BLIT_1BPP))
-  (call $blit (i32.const 0x2028) (i32.const 83) (i32.const 76) (i32.const 8) (i32.const 8) (i32.or(global.get $BLIT_1BPP )(global.get $BLIT_ROTATE)))
-   (call $text(i32.const 0x20a8) (i32.const 21) (i32.const 106))
+  (call $blit (i32.const 0x19a0) (i32.const 75) (i32.const 36) (i32.const 8) (i32.const 8) (global.get $BLIT_1BPP))
+  (call $blit (i32.const 0x19a8) (i32.const 82) (i32.const 36) (i32.const 8) (i32.const 8) (global.get $BLIT_1BPP))
+  (call $blit (i32.const 0x19b0) (i32.const 88) (i32.const 36) (i32.const 8) (i32.const 8) (global.get $BLIT_1BPP))
+  (call $blit (i32.const 0x19b8) (i32.const 83) (i32.const 46) (i32.const 8) (i32.const 8) (global.get $BLIT_1BPP))
+  (call $blit (i32.const 0x2000) (i32.const 83) (i32.const 76) (i32.const 8) (i32.const 8) (i32.or(global.get $BLIT_1BPP )(global.get $BLIT_ROTATE)))
+   (call $text(i32.const 0x20a0) (i32.const 21) (i32.const 106))
 )
