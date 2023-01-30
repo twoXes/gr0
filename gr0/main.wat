@@ -1,13 +1,9 @@
-;;
-;; WASM-4: https://wasm4.org/docs
-
+;; memory required to load instructions 
+;; 1 page of memory loaded (64kB)
 (import "env" "memory" (memory 1))
 
-;; ┌───────────────────────────────────────────────────────────────────────────┐
-;; │                                                                           │
-;; │ Drawing Functions                                                         │
-;; │                                                                           │
-;; └───────────────────────────────────────────────────────────────────────────┘
+;;-------------------Drawing Functions
+;;-------------------
 (; Copies pixels to the framebuffer. ;)
 (import "env" "blit" (func $blit (param i32 i32 i32 i32 i32 i32)))
 
@@ -32,19 +28,11 @@
 (; Draws text using the built-in system font. ;)
 (import "env" "text" (func $text (param i32 i32 i32)))
 
-;; ┌───────────────────────────────────────────────────────────────────────────┐
-;; │                                                                           │
-;; │ Sound Functions                                                           │
-;; │                                                                           │
-;; └───────────────────────────────────────────────────────────────────────────┘
 (; Plays a sound tone. ;)
 (import "env" "tone" (func $tone (param i32 i32 i32 i32)))
 
-;; ┌───────────────────────────────────────────────────────────────────────────┐
-;; │                                                                           │
-;; │ Storage Functions                                                         │
-;; │                                                                           │
-;; └───────────────────────────────────────────────────────────────────────────┘
+;;------------------Storage Functions
+;;------------------
 (; Reads up to `size` bytes from persistent storage into the pointer `dest`. ;)
 (import "env" "diskr" (func $diskr (param i32 i32)))
 
@@ -57,14 +45,9 @@
 (; Prints a message to the debug console. ;)
 (import "env" "tracef" (func $tracef (param i32 i32)))
 
-
-;; ┌───────────────────────────────────────────────────────────────────────────┐
-;; │                                                                           │
-;; │ Memory Addresses                                                          │
-;; │                                                                           │
-;; └───────────────────────────────────────────────────────────────────────────┘
-
-(global $PALETTE0 i32 (i32.const 0x04))
+;;-----------------------Memory Addresses
+;;-----------------------
+(global $PALETTE0 i32 (i32.const 0x04))  
 (global $PALETTE1 i32 (i32.const 0x08))
 (global $PALETTE2 i32 (i32.const 0x0c))
 (global $PALETTE3 i32 (i32.const 0x10))
@@ -146,8 +129,6 @@
 (data (i32.const 0x2090) "\00\58\13\58\13\58\13\00") ;;house3
 (data (i32.const 0x2098) "\c3\34\55\89\00\89\34\c3") ;;cat
 (data (i32.const 0x20a0) "Press X to start") ;; text
-
-
 
 (func (export "start")
 )
