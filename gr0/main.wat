@@ -47,6 +47,7 @@
 
 ;;-----------------------Memory Addresses
 ;;-----------------------
+;; palette0 is usually the background color
 (global $PALETTE0 i32 (i32.const 0x04))  
 (global $PALETTE1 i32 (i32.const 0x08))
 (global $PALETTE2 i32 (i32.const 0x0c))
@@ -77,13 +78,11 @@
 (global $SYSTEM_PRESERVE_FRAMEBUFFER i32 (i32.const 1))
 (global $SYSTEM_HIDE_GAMEPAD_OVERLAY i32 (i32.const 2))
 
-
 (global $BLIT_2BPP i32 (i32.const 1))
 (global $BLIT_1BPP i32 (i32.const 0))
 (global $BLIT_FLIP_X i32 (i32.const 2))
 (global $BLIT_FLIP_Y i32 (i32.const 4))
 (global $BLIT_ROTATE i32 (i32.const 8))
-
 
 (global $TONE_PULSE1 i32 (i32.const 0))
 (global $TONE_PULSE2 i32 (i32.const 1))
@@ -95,6 +94,10 @@
 (global $TONE_MODE4 i32 (i32.const 12))
 (global $TONE_PAN_LEFT i32 (i32.const 16))
 (global $TONE_PAN_RIGHT i32 (i32.const 32))
+
+;; Player character position
+(global $x (mut i32) (i32.const 46))
+(global $y (mut i32) (i32.const 76))
 
 (data (i32.const 0x19a0) "\c3\99\99\99\99\99\99\99") ;; N(unchuk)
 (data (i32.const 0x19a8) "\c3\99\99\99\99\99\99\c3") ;; O
@@ -130,28 +133,71 @@
 (data (i32.const 0x2098) "\c3\34\55\89\00\89\34\c3") ;;cat
 (data (i32.const 0x20a0) "Press X to start") ;; text
 
+(func $inputHandler (local $gamepad i32) (local $dx i32) (local $dy i32) 
+      ;;gamepad 1 (at memory 0x16) loaded here
+      ;; load an unsigned 8-bit number and convert it into an i32 
+      ;; here taking the 8bit controller and making it i32
+      ;; set the gamepad with the current number on the stack? 0x16 
+      i32.const 0x16
+      i32.load8_u
+      local.set $gamepad
+ 
+      ;;left  
+      local.get $gamepad
+      i32.const 0x10
+      i32.and 
+      if 
+        i32.const -1 
+        local.set $dx
+      end 
+
+      ;;right 
+      local.get $gamepad
+      i32.const 0x20
+      i32.and
+      if
+        i32.const 1 
+        local.set $dx
+      end 
+
+      ;; up 
+      local.get $gamepad 
+      i32.const 0x40 
+      i32.and 
+      if 
+        i32.const -1 
+        local.set $dy
+      end 
+
+      ;;down 
+      local.get $gamepad 
+      i32.const 0x80 
+      i32.and 
+      if 
+        i32.const 1 
+        local.set $dy
+      end 
+    
+      global.get $x
+      local.get $dx
+      i32.add
+      global.set $x
+
+      global.get $y 
+      local.get $dy 
+      i32.add 
+      global.set $y 
+)
+
 (func (export "start")
 )
 
 (func (export "update")
-  (local $gamepad i32)
-
+    call $inputHandler
   ;; *DRAW_COLORS = 2
   (i32.store16 (global.get $DRAW_COLORS) (i32.const 3))
 
-  ;; text("Hello from Wat!", 10, 10);
-;;  (call $text (i32.const 0x19a8) (i32.const 10) (i32.const 10))
 
-  ;; uint8_t gamepad = *GAMEPAD1;
-  (local.set $gamepad (i32.load8_u (global.get $GAMEPAD1)))
-
-  ;; if (gamepad & BUTTON_1) {
-  ;;     *DRAW_COLORS = 4;
-  ;; }
-  (if (i32.and (local.get $gamepad) (global.get $BUTTON_1))
-    (then
-      (i32.store16 (global.get $DRAW_COLORS) (i32.const 4))
-    ))
 
   (call $blit (i32.const 0x19a0) (i32.const 75) (i32.const 36) (i32.const 8) (i32.const 8) (global.get $BLIT_1BPP))
   (call $blit (i32.const 0x19a8) (i32.const 82) (i32.const 36) (i32.const 8) (i32.const 8) (global.get $BLIT_1BPP))
@@ -159,4 +205,15 @@
   (call $blit (i32.const 0x19b8) (i32.const 83) (i32.const 46) (i32.const 8) (i32.const 8) (global.get $BLIT_1BPP))
   (call $blit (i32.const 0x2000) (i32.const 83) (i32.const 76) (i32.const 8) (i32.const 8) (i32.or(global.get $BLIT_1BPP )(global.get $BLIT_ROTATE)))
    (call $text(i32.const 0x20a0) (i32.const 21) (i32.const 106))
+    
+    ;;add main character and move with game pad
+    i32.const 0x19c0
+    global.get $x
+    global.get $y
+    i32.const 8
+    i32.const 8
+    i32.const 0
+    call $blit
 )
+
+
