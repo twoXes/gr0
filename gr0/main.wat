@@ -131,7 +131,7 @@
 (data (i32.const 0x2088) "\c3\24\81\24\81\24\81\c3") ;;house2
 (data (i32.const 0x2090) "\00\58\13\58\13\58\13\00") ;;house3
 (data (i32.const 0x2098) "\c3\34\55\89\00\89\34\c3") ;;cat
-(data (i32.const 0x20a0) "Press X to start") ;; text
+(data (i32.const 0x20a0) "\04\10\04\10\0F\F0\3C\3C\3C\3C\0F\F0\03\C0\00\00\02\80\02\A0\0A\A0\08\20\3C\3C\3C\3C\3C\3C\28\28")  
 
 (func $inputHandler (local $gamepad i32) (local $dx i32) (local $dy i32) 
       ;;gamepad 1 (at memory 0x16) loaded here
@@ -190,22 +190,37 @@
 )
 
 (func (export "start")
+(i32.store (global.get $PALETTE0) (i32.const 0x1e1c32))
+(i32.store (global.get $PALETTE1) (i32.const 0xFF00FF))
+(i32.store (global.get $PALETTE2) (i32.const 0xFFFFFF))
+(i32.store (global.get $PALETTE3) (i32.const 0x00FF00))
 )
 
 (func (export "update")
-    call $inputHandler
-  ;; *DRAW_COLORS = 2
-  (i32.store16 (global.get $DRAW_COLORS) (i32.const 3))
+  call $inputHandler
 
 
-
-  (call $blit (i32.const 0x19a0) (i32.const 75) (i32.const 36) (i32.const 8) (i32.const 8) (global.get $BLIT_1BPP))
-  (call $blit (i32.const 0x19a8) (i32.const 82) (i32.const 36) (i32.const 8) (i32.const 8) (global.get $BLIT_1BPP))
-  (call $blit (i32.const 0x19b0) (i32.const 88) (i32.const 36) (i32.const 8) (i32.const 8) (global.get $BLIT_1BPP))
-  (call $blit (i32.const 0x19b8) (i32.const 83) (i32.const 46) (i32.const 8) (i32.const 8) (global.get $BLIT_1BPP))
+  (i32.store16 (global.get $DRAW_COLORS) (i32.const 4))
+  (call $blit (i32.const 0x19a8) (i32.const 89) (i32.const 36) (i32.const 8) (i32.const 8) (global.get $BLIT_1BPP))
+  (call $blit (i32.const 0x19a8) (i32.const 96) (i32.const 36) (i32.const 8) (i32.const 8) (global.get $BLIT_1BPP))
+  (call $blit (i32.const 0x19a0) (i32.const 103) (i32.const 36) (i32.const 8) (i32.const 8) (global.get $BLIT_1BPP))
+  (call $blit (i32.const 0x19a0) (i32.const 107) (i32.const 36) (i32.const 8) (i32.const 8) (global.get $BLIT_1BPP))
+ 
+  (call $blit (i32.const 0x19a0) (i32.const 87) (i32.const 46) (i32.const 8) (i32.const 8) (global.get $BLIT_1BPP))
+ 
+  (call $blit (i32.const 0x19b0) (i32.const 75) (i32.const 56) (i32.const 8) (i32.const 8) (global.get $BLIT_1BPP))
+  (call $blit (i32.const 0x19a8) (i32.const 83) (i32.const 56) (i32.const 8) (i32.const 8) (global.get $BLIT_1BPP))
+  (call $blit (i32.const 0x19a8) (i32.const 90) (i32.const 56) (i32.const 8) (i32.const 8) (global.get $BLIT_1BPP))
+  (call $blit (i32.const 0x19a0) (i32.const 97) (i32.const 56) (i32.const 8) (i32.const 8) (global.get $BLIT_1BPP))
+  (call $blit (i32.const 0x19a0) (i32.const 101) (i32.const 56) (i32.const 8) (i32.const 8) (global.get $BLIT_1BPP))
+  
+  (call $blit (i32.const 0x19b8) (i32.const 83) (i32.const 66) (i32.const 8) (i32.const 8) (global.get $BLIT_1BPP))
+ 
+ 
   (call $blit (i32.const 0x2000) (i32.const 83) (i32.const 76) (i32.const 8) (i32.const 8) (i32.or(global.get $BLIT_1BPP )(global.get $BLIT_ROTATE)))
-   (call $text(i32.const 0x20a0) (i32.const 21) (i32.const 106))
-    
+
+  (i32.store16 (global.get $DRAW_COLORS) (i32.const 0x4320))
+  (call $blit (i32.const 0x20a0) (i32.const 75) (i32.const 96) (i32.const 8) (i32.const 16) (global.get $BLIT_2BPP))
     ;;add main character and move with game pad
     i32.const 0x19c0
     global.get $x
