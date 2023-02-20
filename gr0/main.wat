@@ -131,7 +131,10 @@
 (data (i32.const 0x2088) "\c3\24\81\24\81\24\81\c3") ;;house2
 (data (i32.const 0x2090) "\00\58\13\58\13\58\13\00") ;;house3
 (data (i32.const 0x2098) "\c3\34\55\89\00\89\34\c3") ;;cat
-(data (i32.const 0x20a0) "\04\10\04\10\0F\F0\3C\3C\3C\3C\0F\F0\03\C0\00\00\02\80\02\A0\0A\A0\08\20\3C\3C\3C\3C\3C\3C\28\28")  
+(data (i32.const 0x20a0) "\03\00\3f\01\80\fc\00\C0") ;; S
+(data (i32.const 0x20a8) "\bd\3c\3c\00\00\3c\3c\bd") ;; R
+(data (i32.const 0x20b0) "\01\00\3c\00\01\3c\3c\3c")
+;;(data (i32.const 0x20a8) "\04\10\04\10\0F\F0\3C\3C\3C\3C\0F\F0\03\C0\00\00\02\80\02\A0\0A\A0\08\20\3C\3C\3C\3C\3C\3C\28\28")  
 
 (func $inputHandler (local $gamepad i32) (local $dx i32) (local $dy i32) 
       ;;gamepad 1 (at memory 0x16) loaded here
@@ -201,26 +204,29 @@
 
 
   (i32.store16 (global.get $DRAW_COLORS) (i32.const 4))
-  (call $blit (i32.const 0x19a8) (i32.const 89) (i32.const 36) (i32.const 8) (i32.const 8) (global.get $BLIT_1BPP))
-  (call $blit (i32.const 0x19a8) (i32.const 96) (i32.const 36) (i32.const 8) (i32.const 8) (global.get $BLIT_1BPP))
-  (call $blit (i32.const 0x19a0) (i32.const 103) (i32.const 36) (i32.const 8) (i32.const 8) (global.get $BLIT_1BPP))
-  (call $blit (i32.const 0x19a0) (i32.const 107) (i32.const 36) (i32.const 8) (i32.const 8) (global.get $BLIT_1BPP))
+  (call $blit (i32.const 0x20a0) (i32.const 65) (i32.const 36) (i32.const 8) (i32.const 8) (global.get $BLIT_1BPP)) ;; S
+  (call $blit (i32.const 0x20a8) (i32.const 73) (i32.const 36) (i32.const 8) (i32.const 8) (global.get $BLIT_1BPP)) ;; H
+  (call $blit (i32.const 0x20b0) (i32.const 80) (i32.const 36) (i32.const 8) (i32.const 8) (global.get $BLIT_1BPP)) ;; R
+  (call $blit (i32.const 0x19a8) (i32.const 88) (i32.const 36) (i32.const 8) (i32.const 8) (global.get $BLIT_1BPP)) ;; O
+  (call $blit (i32.const 0x19a8) (i32.const 94) (i32.const 36) (i32.const 8) (i32.const 8) (global.get $BLIT_1BPP)) ;; O
+  (call $blit (i32.const 0x19a0) (i32.const 101) (i32.const 36) (i32.const 8) (i32.const 8) (global.get $BLIT_1BPP)) ;; M1
+  (call $blit (i32.const 0x19a0) (i32.const 105) (i32.const 36) (i32.const 8) (i32.const 8) (global.get $BLIT_1BPP)) ;; M2
  
-  (call $blit (i32.const 0x19a0) (i32.const 87) (i32.const 46) (i32.const 8) (i32.const 8) (global.get $BLIT_1BPP))
+  (call $blit (i32.const 0x19a0) (i32.const 85) (i32.const 46) (i32.const 8) (i32.const 8) (global.get $BLIT_1BPP)) ;; N
  
-  (call $blit (i32.const 0x19b0) (i32.const 75) (i32.const 56) (i32.const 8) (i32.const 8) (global.get $BLIT_1BPP))
-  (call $blit (i32.const 0x19a8) (i32.const 83) (i32.const 56) (i32.const 8) (i32.const 8) (global.get $BLIT_1BPP))
-  (call $blit (i32.const 0x19a8) (i32.const 90) (i32.const 56) (i32.const 8) (i32.const 8) (global.get $BLIT_1BPP))
-  (call $blit (i32.const 0x19a0) (i32.const 97) (i32.const 56) (i32.const 8) (i32.const 8) (global.get $BLIT_1BPP))
-  (call $blit (i32.const 0x19a0) (i32.const 101) (i32.const 56) (i32.const 8) (i32.const 8) (global.get $BLIT_1BPP))
+  (call $blit (i32.const 0x19b0) (i32.const 75) (i32.const 56) (i32.const 8) (i32.const 8) (global.get $BLIT_1BPP)) ;; D
+  (call $blit (i32.const 0x19a8) (i32.const 83) (i32.const 56) (i32.const 8) (i32.const 8) (global.get $BLIT_1BPP)) ;; O
+  (call $blit (i32.const 0x19a8) (i32.const 90) (i32.const 56) (i32.const 8) (i32.const 8) (global.get $BLIT_1BPP)) ;; O
+  (call $blit (i32.const 0x19a0) (i32.const 97) (i32.const 56) (i32.const 8) (i32.const 8) (global.get $BLIT_1BPP)) ;; M1
+  (call $blit (i32.const 0x19a0) (i32.const 101) (i32.const 56) (i32.const 8) (i32.const 8) (global.get $BLIT_1BPP)) ;; M2
   
-  (call $blit (i32.const 0x19b8) (i32.const 83) (i32.const 66) (i32.const 8) (i32.const 8) (global.get $BLIT_1BPP))
+  (call $blit (i32.const 0x19b8) (i32.const 83) (i32.const 66) (i32.const 8) (i32.const 8) (global.get $BLIT_1BPP)) ;; II 
  
  
-  (call $blit (i32.const 0x2000) (i32.const 83) (i32.const 76) (i32.const 8) (i32.const 8) (i32.or(global.get $BLIT_1BPP )(global.get $BLIT_ROTATE)))
+  (call $blit (i32.const 0x2000) (i32.const 83) (i32.const 86) (i32.const 8) (i32.const 8) (i32.or(global.get $BLIT_1BPP )(global.get $BLIT_ROTATE)))
 
   (i32.store16 (global.get $DRAW_COLORS) (i32.const 0x4320))
-  (call $blit (i32.const 0x20a0) (i32.const 75) (i32.const 96) (i32.const 8) (i32.const 16) (global.get $BLIT_2BPP))
+ ;; (call $blit (i32.const 0x20a0) (i32.const 75) (i32.const 96) (i32.const 8) (i32.const 16) (global.get $BLIT_2BPP))
     ;;add main character and move with game pad
     i32.const 0x19c0
     global.get $x
